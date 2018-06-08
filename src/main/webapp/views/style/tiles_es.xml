@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+ * tiles_es.xml
+ *
+ * Copyright (C) 2017 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+      
+<tiles-definitions>
+	
+	<definition name="style/list" extends="master.page">	
+		<put-attribute name="title" value="Lista de Estilos" />
+		<put-attribute name="body" value="/views/style/list.jsp" />
+	</definition>
+	
+	<definition name="style/edit" extends="master.page">	
+		<put-attribute name="title" value="Editar Estilo" />
+		<put-attribute name="body" value="/views/style/edit.jsp" />
+	</definition>
+	
+	<definition name="style/create" extends="master.page">	
+		<put-attribute name="title" value="Nuevo estilo" />
+		<put-attribute name="body" value="/views/style/create.jsp" />
+	</definition>
+	
+	<definition name="style/listAdministrator" extends="master.page">	
+		<put-attribute name="title" value="Lista de Estilos" />
+		<put-attribute name="body" value="/views/style/listAdministrator.jsp" />
+	</definition>
+	
+	<definition name="style/listPicture" extends="master.page">	
+		<put-attribute name="title" value="Editar Fotos" />
+		<put-attribute name="body" value="/views/style/listPicture.jsp" />
+	</definition>
+	
+	<definition name="style/listVideo" extends="master.page">	
+		<put-attribute name="title" value="Editar videos" />
+		<put-attribute name="body" value="/views/style/listVideo.jsp" />
+	</definition>
+	
+	<definition name="style/addPicture" extends="master.page">	
+		<put-attribute name="title" value="añadir Foto" />
+		<put-attribute name="body" value="/views/style/addPicture.jsp" />
+	</definition>
+	
+	<definition name="style/addVideo" extends="master.page">	
+		<put-attribute name="title" value="Añadir video" />
+		<put-attribute name="body" value="/views/style/addVideo.jsp" />
+	</definition>
+	
+	<definition name="style/view" extends="master.page">	
+		<put-attribute name="title" value="Ver estilo" />
+		<put-attribute name="body" value="/views/style/view.jsp" />
+	</definition>
+	
+</tiles-definitions>

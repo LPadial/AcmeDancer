@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- * PopulateDatabase.xml * * Copyright (C) 2017 Universidad de Sevilla 
+	* * The use of this project is hereby constrained to the conditions of the 
+	* TDG Licence, a copy of which you may download from * http://www.tdg-seville.info/License.html -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+
+	<!-- User accounts -->
+
+	<bean id="userAccount1" class="security.UserAccount">
+		<property name="username" value="admin" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMINISTRATOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount2" class="security.UserAccount">
+		<property name="username" value="dancer1" />
+		<property name="password" value="932f3b9f35d20f6202d5181db55358aa" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="DANCER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount3" class="security.UserAccount">
+		<property name="username" value="dancer2" />
+		<property name="password" value="c2b207fa4f0fd315eeae2a7643c7a791" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="DANCER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="academy1" />
+		<property name="password" value="2867dc13a84476546c069b33dc859bc7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ACADEMY" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="userAccount5" class="security.UserAccount">
+		<property name="username" value="academy2" />
+		<property name="password" value="86cbff988e1e889653b316f6695e5e6b" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ACADEMY" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount6" class="security.UserAccount">
+		<property name="username" value="super" />
+		<property name="password" value="1b3231655cebb7a1f783eddf27d254ca" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMINISTRATOR" />
+				</bean>
+				<bean class="security.Authority">
+					<property name="authority" value="DANCER" />
+				</bean>
+				<bean class="security.Authority">
+					<property name="authority" value="ACADEMY" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount7" class="security.UserAccount">
+		<property name="username" value="academy3" />
+		<property name="password" value="526c4e886de557da4a11880c41fe3c0f" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ACADEMY" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount8" class="security.UserAccount">
+		<property name="username" value="dancer3" />
+		<property name="password" value="e1af577da725228139aa987d4c3dacb4" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="DANCER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Other domain beans come here -->
+	
+	<bean id="administrator1" class="domain.Administrator">
+		<property name="actorName" value="Laura" />
+		<property name="surname" value="Padial" />
+		<property name="email" value="lp@hotmail.com" />
+		<property name="phone" value="" />
+		<property name="address" value="41109" />
+		<property name="userAccount" ref="userAccount1" />
+		<property name="follower">
+			<list>
+				<ref bean="academy2" />
+				<ref bean="dancer1" />
+				<ref bean="dancer2" />
+			</list>
+		</property>
+		<property name="chirps">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="academy1" class="domain.Academy">
+		<property name="actorName" value="Juan Carlos" />
+		<property name="surname" value="Lopez" />
+		<property name="email" value="jc@hotmail.com" />
+		<property name="phone" value="+34 (777) 1234" />
+		<property name="address" value="41100" />
+		<property name="userAccount" ref="userAccount4" />
+		<property name="follower">
+			<list>
+				<ref bean="academy2" />
+				<ref bean="dancer1" />
+				<ref bean="dancer2" />
+			</list>
+		</property>
+		<property name="chirps">
+			<list>
+				<ref bean="chirp1" />
+				<ref bean="chirp5" />
+			</list>
+		</property>
+		<property name="commercialName" value="karli academy" />
+		<property name="tutorials">
+			<list>
+				<ref bean="tutorial1" />
+				<ref bean="tutorial2" />
+			</list>
+		</property>
+		<property name="courses">
+			<list>
+				<ref bean="course1" />
+				<ref bean="course2" />
+				<ref bean="course5" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="academy2" class="domain.Academy">
+		<property name="actorName" value="Laura" />
+		<property name="surname" value="Padial" />
+		<property name="email" value="laura@hotmail.com" />
+		<property name="phone" value="+34 (777) 1224" />
+		<property name="address" value="41100" />
+		<property name="userAccount" ref="userAccount5" />
+		<property name="follower">
+			<list>
+				<ref bean="dancer1" />
+				<ref bean="dancer2" />
+			</list>
+		</property>
+		<property name="chirps">
+			<list>
+				<ref bean="chirp2" />
+				<ref bean="chirp6" />
+			</list>
+		</property>
+		<property name="commercialName" value="laurita academy" />
+		<property name="tutorials">
+			<list>
+				<ref bean="tutorial3" />
+			</list>
+		</property>
+		<property name="courses">
+			<list>
+				<ref bean="course3" />
+				<ref bean="course6" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="academy3" class="domain.Academy">
+		<property name="actorName" value="Karli" />
+		<property name="surname" value="Lopez" />
+		<property name="email" value="jc@hotmail.com" />
+		<property name="phone" value="+34 (666) 1234" />
+		<property name="address" value="41109" />
+		<property name="userAccount" ref="userAccount7" />
+		<property name="follower">
+			<list>
+			</list>
+		</property>
+		<property name="chirps">
+			<list>
+				<ref bean="chirp3" />
+			</list>
+		</property>
+		<property name="commercialName" value="karlichin" />
+		<property name="tutorials">
+			<list>
+				<ref bean="tutorial6" />
+			</list>
+		</property>
+		<property name="courses">
+			<list>
+				<ref bean="course4" />
+			</list>
+		</property>
+	</bean>
+
+
+
+	<bean id="dancer1" class="domain.Dancer">
+		<property name="actorName" value="Juan Jose" />
+		<property name="surname" value="Valle" />
+		<property name="email" value="jj@hotmail.com" />
+		<property name="phone" value="+34 (777) 1524" />
+		<property name="address" value="41100" />
+		<property name="userAccount" ref="userAccount2" />
+		<property name="follower">
+			<list>
+				<ref bean="academy2" />
+			</list>
+		</property>
+		<property name="chirps">
+			<list>
+				<ref bean="chirp4" />
+				<ref bean="chirp7" />
+			</list>
+		</property>
+		<property name="applications">
+			<list>
+				<ref bean="application1" />
+				<ref bean="application2" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="dancer2" class="domain.Dancer">
+		<property name="actorName" value="Adrian" />
+		<property name="surname" value="Sanchez" />
+		<property name="email" value="adrian@hotmail.com" />
+		<property name="phone" value="+34 (777) 2524" />
+		<property name="address" value="41100" />
+		<property name="userAccount" ref="userAccount3" />
+		<property name="follower">
+			<list>
+				<ref bean="academy2" />
+				<ref bean="dancer1" />
+			</list>
+		</property>
+		<property name="chirps">
+			<list>
+				<ref bean="chirp8" />
+			</list>
+		</property>
+		<property name="applications">
+			<list>
+				<ref bean="application3" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="dancer3" class="domain.Dancer">
+		<property name="actorName" value="Pepito" />
+		<property name="surname" value="Grillo" />
+		<property name="email" value="pegri@hotmail.com" />
+		<property name="phone" value="+34 (777) 4343" />
+		<property name="address" value="41108" />
+		<property name="userAccount" ref="userAccount8" />
+		<property name="follower">
+			<list>
+			</list>
+		</property>
+		<property name="chirps">
+			<list>
+			</list>
+		</property>
+		<property name="applications">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+
+
+	<bean id="chirp1" class="domain.Chirp">
+		<property name="momentWritten" value="16/08/2017 00:00:12" />
+		<property name="text" value="Hello world!" />
+		<property name="actor" ref="academy1" />
+	</bean>
+
+	<bean id="chirp2" class="domain.Chirp">
+		<property name="momentWritten" value="16/08/2017 00:00:15" />
+		<property name="text" value="How are you?" />
+		<property name="actor" ref="academy2" />
+	</bean>
+
+	<bean id="chirp3" class="domain.Chirp">
+		<property name="momentWritten" value="16/08/2017 00:00:20" />
+		<property name="text" value="This is great!" />
+		<property name="actor" ref="academy3" />
+	</bean>
+
+	<bean id="chirp4" class="domain.Chirp">
+		<property name="momentWritten" value="16/08/2017 00:00:21" />
+		<property name="text" value="I was train a lot" />
+		<property name="actor" ref="dancer1" />
+	</bean>
+
+	<bean id="chirp5" class="domain.Chirp">
+		<property name="momentWritten" value="17/08/2017 08:00:00" />
+		<property name="text" value="Good morning" />
+		<property name="actor" ref="academy1" />
+	</bean>
+
+	<bean id="chirp6" class="domain.Chirp">
+		<property name="momentWritten" value="17/08/2017 08:01:00" />
+		<property name="text" value="What's happen in the morning'" />
+		<property name="actor" ref="academy2" />
+	</bean>
+
+	<bean id="chirp7" class="domain.Chirp">
+		<property name="momentWritten" value="17/08/2017 08:02:00" />
+		<property name="text" value="Today we start hard!" />
+		<property name="actor" ref="dancer1" />
+	</bean>
+
+	<bean id="chirp8" class="domain.Chirp">
+		<property name="momentWritten" value="17/08/2017 08:03:00" />
+		<property name="text" value="Woww I appoint!" />
+		<property name="actor" ref="dancer2" />
+	</bean>
+
+
+
+	<bean id="tutorial1" class="domain.Tutorial">
+		<property name="title" value="Pachanga" />
+		<property name="description" value="How dancer pachanga" />
+		<property name="video" value="https://www.youtube.com/watch?v=BwjN0t7eFPU" />
+		<property name="numShows" value="6" />
+	</bean>
+
+	<bean id="tutorial2" class="domain.Tutorial">
+		<property name="title" value="salsa latina" />
+		<property name="description" value="How dancer salsa latina" />
+		<property name="video" value="https://www.youtube.com/watch?v=Z7rFasnFCHw" />
+		<property name="numShows" value="10" />
+	</bean>
+
+	<bean id="tutorial3" class="domain.Tutorial">
+		<property name="title" value="popping dancer" />
+		<property name="description" value="How dancer popping" />
+		<property name="video" value="https://www.youtube.com/watch?v=ExfzIXHh_i8" />
+		<property name="numShows" value="20" />
+	</bean>
+
+	<bean id="tutorial4" class="domain.Tutorial">
+		<property name="title" value="41 Pasos de Salsa Cubana" />
+		<property name="description" value="La salsa más movida" />
+		<property name="video" value="https://www.youtube.com/watch?v=Gj-evaqUzeA" />
+		<property name="numShows" value="6" />
+	</bean>
+
+	<bean id="tutorial5" class="domain.Tutorial">
+		<property name="title" value="Bachata sensual" />
+		<property name="description" value="Daniel y Desiree (Luis fonsi - Despacito)" />
+		<property name="video" value="https://www.youtube.com/watch?v=K0NGLAAlxCk" />
+		<property name="numShows" value="10" />
+	</bean>
+
+	<bean id="tutorial6" class="domain.Tutorial">
+		<property name="title" value="Twerk" />
+		<property name="description" value="How dancer twerk?" />
+		<property name="video" value="https://www.youtube.com/watch?v=Mn4orvxIeBg" />
+		<property name="numShows" value="20" />
+	</bean>
+
+
+
+	<bean id="PENDING" class="domain.StatusApplication">
+		<property name="value" value="PENDING" />
+	</bean>
+
+	<bean id="ACCEPTED" class="domain.StatusApplication">
+		<property name="value" value="ACCEPTED" />
+	</bean>
+
+	<bean id="REJECTED" class="domain.StatusApplication">
+		<property name="value" value="REJECTED" />
+	</bean>
+
+
+
+	<bean id="BEGINNER" class="domain.LevelCourse">
+		<property name="value" value="BEGINNER" />
+	</bean>
+
+	<bean id="INTERMEDIATE" class="domain.LevelCourse">
+		<property name="value" value="INTERMEDIATE" />
+	</bean>
+
+	<bean id="ADVANCED" class="domain.LevelCourse">
+		<property name="value" value="ADVANCED" />
+	</bean>
+
+	<bean id="PROFESSIONAL" class="domain.LevelCourse">
+		<property name="value" value="PROFESSIONAL" />
+	</bean>
+
+
+
+	<bean id="application1" class="domain.Application">
+		<property name="createMoment" value="16/08/2017 00:12:00" />
+		<property name="statusApplication" ref="PENDING" />
+		<property name="course" ref="course1" />
+	</bean>
+
+	<bean id="application2" class="domain.Application">
+		<property name="createMoment" value="16/08/2017 13:00:00" />
+		<property name="statusApplication" ref="ACCEPTED" />
+		<property name="course" ref="course2" />
+	</bean>
+
+	<bean id="application3" class="domain.Application">
+		<property name="createMoment" value="16/08/2017 20:00:00" />
+		<property name="statusApplication" ref="REJECTED" />
+		<property name="course" ref="course3" />
+	</bean>
+
+	<bean id="application4" class="domain.Application">
+		<property name="createMoment" value="17/08/2017 08:12:12" />
+		<property name="statusApplication" ref="PENDING" />
+		<property name="course" ref="course4" />
+	</bean>
+
+	<bean id="application5" class="domain.Application">
+		<property name="createMoment" value="17/08/2017 08:13:13" />
+		<property name="statusApplication" ref="ACCEPTED" />
+		<property name="course" ref="course4" />
+	</bean>
+
+	<bean id="application6" class="domain.Application">
+		<property name="createMoment" value="17/08/2017 08:20:00" />
+		<property name="statusApplication" ref="REJECTED" />
+		<property name="course" ref="course4" />
+	</bean>
+
+	<bean id="course1" class="domain.Course">
+		<property name="title" value="Bachata lessons" />
+		<property name="levelCourse" ref="BEGINNER" />
+		<property name="start" value="16/08/2017 00:00:00" />
+		<property name="end" value="16/12/2017 00:00:00" />
+		<property name="dayWeek" value="Monday" />
+		<property name="time" value="01/01/2000 20:00:00" />
+		<property name="academy" ref="academy1" />
+		<property name="applications">
+			<list>
+				<ref bean="application1" />
+			</list>
+		</property>
+		<property name="style" ref="style1" />
+	</bean>
+
+	<bean id="course2" class="domain.Course">
+		<property name="title" value="course salsa latina" />
+		<property name="levelCourse" ref="INTERMEDIATE" />
+		<property name="start" value="16/08/2017 00:00:00" />
+		<property name="end" value="16/12/2018 00:00:00" />
+		<property name="dayWeek" value="Tuesday" />
+		<property name="time" value="01/01/2000 17:00:00" />
+		<property name="academy" ref="academy1" />
+		<property name="applications">
+			<list>
+				<ref bean="application2" />
+			</list>
+		</property>
+		<property name="style" ref="style2" />
+	</bean>
+
+	<bean id="course3" class="domain.Course">
+		<property name="title" value="Pachanga lessons" />
+		<property name="levelCourse" ref="ADVANCED" />
+		<property name="start" value="16/08/2017 00:00:00" />
+		<property name="end" value="16/10/2018 00:00:00" />
+		<property name="dayWeek" value="Thursday" />
+		<property name="time" value="01/01/2000 20:00:00" />
+		<property name="academy" ref="academy2" />
+		<property name="applications">
+			<list>
+				<ref bean="application3" />
+			</list>
+		</property>
+		<property name="style" ref="style3" />
+	</bean>
+
+	<bean id="course4" class="domain.Course">
+		<property name="title" value="Cha-chá lessons" />
+		<property name="levelCourse" ref="BEGINNER" />
+		<property name="start" value="15/09/2017 00:00:00" />
+		<property name="end" value="25/06/2018 00:00:00" />
+		<property name="dayWeek" value="Wednesday" />
+		<property name="time" value="01/01/2000 16:00:00" />
+		<property name="academy" ref="academy3" />
+		<property name="applications">
+			<list>
+				<ref bean="application4" />
+				<ref bean="application5" />
+				<ref bean="application6" />
+			</list>
+		</property>
+		<property name="style" ref="style4" />
+	</bean>
+
+	<bean id="course5" class="domain.Course">
+		<property name="title" value="Rumba lessons" />
+		<property name="levelCourse" ref="INTERMEDIATE" />
+		<property name="start" value="16/01/2018 00:00:00" />
+		<property name="end" value="16/06/2018 00:00:00" />
+		<property name="dayWeek" value="Tuesday" />
+		<property name="time" value="01/01/2000 17:00:00" />
+		<property name="academy" ref="academy1" />
+		<property name="applications">
+			<list>
+			</list>
+		</property>
+		<property name="style" ref="style5" />
+	</bean>
+
+	<bean id="course6" class="domain.Course">
+		<property name="title" value="Kizomba lessons" />
+		<property name="levelCourse" ref="ADVANCED" />
+		<property name="start" value="16/03/2018 00:00:00" />
+		<property name="end" value="16/06/2018 00:00:00" />
+		<property name="dayWeek" value="Friday" />
+		<property name="time" value="01/01/2000 20:00:00" />
+		<property name="academy" ref="academy2" />
+		<property name="applications">
+			<list>
+			</list>
+		</property>
+		<property name="style" ref="style6" />
+	</bean>
+
+
+
+	<bean id="style1" class="domain.Style">
+		<property name="name" value="Bachata" />
+		<property name="description" value="Latin dance" />
+		<property name="pictures">
+			<list value-type="java.lang.String">
+				<value>http://dancingboulevard.com/wp-content/uploads/2015/10/bachata-2.jpg</value>
+			</list>
+		</property>
+		<property name="videos">
+			<list value-type="java.lang.String">
+				<value>https://www.youtube.com/watch?v=PQSaof3b_aE</value>
+			</list>
+		</property>
+		<property name="courses">
+			<list>
+				<ref bean="course1" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="style2" class="domain.Style">
+		<property name="name" value="Salsa" />
+		<property name="description" value="Cuban dance" />
+		<property name="pictures">
+			<list value-type="java.lang.String">
+				<value>https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGMDP_uW6sXGUhK5bqtuQQg4ChyOiqqb3C6G0IE-6eQsd7OKwRIQ</value>
+			</list>
+		</property>
+		<property name="videos">
+			<list value-type="java.lang.String">
+				<value>https://www.youtube.com/watch?v=Gj-evaqUzeA</value>
+			</list>
+		</property>
+		<property name="courses">
+			<list>
+				<ref bean="course2" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="style3" class="domain.Style">
+		<property name="name" value="Pachanga" />
+		<property name="description" value="Cuban dance, mix between salsa and merengue" />
+		<property name="pictures">
+			<list value-type="java.lang.String">
+				<value>http://1.bp.blogspot.com/_A_JOA4qbTsw/TJax4_-RvbI/AAAAAAAAFbs/hWs7xfoGvLU/s400/DSC_0312.JPG</value>
+			</list>
+		</property>
+		<property name="videos">
+			<list value-type="java.lang.String">
+				<value>https://www.youtube.com/watch?v=BwjN0t7eFPU</value>
+			</list>
+		</property>
+		<property name="courses">
+			<list>
+				<ref bean="course3" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="style4" class="domain.Style">
+		<property name="name" value="Chá-chá" />
+		<property name="description" value="Cuban dance" />
+		<property name="pictures">
+			<list value-type="java.lang.String">
+				<value>https://usercontent2.hubstatic.com/12161217_f520.jpg</value>
+			</list>
+		</property>
+		<property name="videos">
+			<list value-type="java.lang.String">
+				<value>https://www.youtube.com/watch?v=xKeUpU446Xg</value>
+			</list>
+		</property>
+		<property name="courses">
+			<list>
+				<ref bean="course4" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="style5" class="domain.Style">
+		<property name="name" value="Rumba" />
+		<property name="description" value="Flamenco" />
+		<property name="pictures">
+			<list value-type="java.lang.String">
+				<value>http://www.universogaditano.com/sites/default/files/imagecache/400xY/flamenco.jpg</value>
+			</list>
+		</property>
+		<property name="videos">
+			<list value-type="java.lang.String">
+				<value>https://www.youtube.com/watch?v=Use9r0ywn-Y</value>
+			</list>
+		</property>
+		<property name="courses">
+			<list>
+				<ref bean="course5" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="style6" class="domain.Style">
+		<property name="name" value="Kizomba" />
+		<property name="description" value="African dance very sensual" />
+		<property name="pictures">
+			<list value-type="java.lang.String">
+				<value>https://www.youtube.com/watch?v=a15gEeLzT2E</value>
+			</list>
+		</property>
+		<property name="videos">
+			<list value-type="java.lang.String">
+				<value>https://www.youtube.com/watch?v=a15gEeLzT2E</value>
+			</list>
+		</property>
+		<property name="courses">
+			<list>
+				<ref bean="course6" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="style7" class="domain.Style">
+		<property name="name" value="Mambo" />
+		<property name="description" value="Latin dance, very funny" />
+		<property name="pictures">
+			<list value-type="java.lang.String">
+				<value>https://inspirationanddance.files.wordpress.com/2012/04/mabo.jpg</value>
+			</list>
+		</property>
+		<property name="videos">
+			<list value-type="java.lang.String">
+				<value>https://www.youtube.com/watch?v=FdhPgVMdIqo</value>
+			</list>
+		</property>
+		<property name="courses">
+			<list>
+			</list>
+		</property>
+	</bean>
+</beans>
